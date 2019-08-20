@@ -5,9 +5,9 @@
 Com o intuito de auxiliar turistas ao chegar na cidade do Recife/PE, fornecendo informações sobre pontos turísticos, além de informações relevantes para a sua viagem. Através de um sistema de recomendação através de escolhas anteriores e categorias selecionadas previamente durante o seu cadastro na plataforma.
 
 ## Soluções existentes
-*TripAdvisor
-*Trivago
-*Foursquare
+* TripAdvisor
+* Trivago
+* Foursquare
 
 Todas essas soluções possuem o déficit de não ter um sistema de recomendação para facilitar a vida do usuário
 
