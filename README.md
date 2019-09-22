@@ -43,13 +43,13 @@ Através de anúncios relacionados a viagens, como locais para hospedagem, resta
 
 ## Licença
 
-##Como executar
-*Back
->node server.js
->node index.js
+## Como executar
+> Back
+- node server.js
+- node index.js
 
-*Front
->ionic serve --c
->ionic cordova run android
+> Front
+- ionic serve --c
+- ionic cordova run android
 
 
