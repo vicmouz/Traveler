@@ -6,6 +6,13 @@ const bodyParser = require('body-parser');
 const port = 3000; 
 const mysql = require('mysql');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'POST, GET');
+  next();
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -17,11 +24,11 @@ router.get('/users', (req, res) =>{
 
 })
 
-router.post('/Postuser', (req, res) =>{
+router.post('/Postuser', (req, res, next) =>{
   console.log('entrei no post!'); 
-   const  first_name = req.headers.first_name.substring(0,150);
-    const last_name = req.headers.last_name.substring(0,150);
-    const email = req.headers.email.substring(0,150);
+   const  first_name = req.body.first_name.substring(0,150);
+    const last_name = req.body.last_name.substring(0,150);
+    const email = req.body.email.substring(0,150);
     console.log(first_name);
     console.log(last_name);
     console.log(email);
