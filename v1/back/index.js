@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const app = express();         
 const bodyParser = require('body-parser');
@@ -29,10 +27,12 @@ router.post('/Postuser', (req, res, next) =>{
    const  first_name = req.body.first_name.substring(0,150);
     const last_name = req.body.last_name.substring(0,150);
     const email = req.body.email.substring(0,150);
+    const password = req.body.email.substring(0,150);
     console.log(first_name);
     console.log(last_name);
     console.log(email);
-    execSQLQuery(`INSERT INTO user(first_name, last_name, email) VALUES('${first_name}','${last_name}','${email}')`, res);
+    console.log(password);
+    execSQLQuery(`INSERT INTO user(first_name, last_name, email, password) VALUES('${first_name}','${last_name}','${email}', '${password}')`, res);
 });
 
 app.use('/', router);
