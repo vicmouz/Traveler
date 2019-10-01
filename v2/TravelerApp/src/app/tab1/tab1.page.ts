@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import  axios  from 'axios';
 //import { HttpClient, Headers, RequestOptions } from '@angular/common/http';
+
+const API = "http://localhost:3000/users/"; 
+
 
 @Component({
   selector: 'app-tab1',
@@ -28,6 +32,7 @@ token;
       'email':'teste123',
       'password': '123456'
     };
+    
  /*   this.httpClient.login(user).subscribe(data => {
       let retrivedData = JSON.parse(data);
       console.log(retrivedData);
@@ -38,14 +43,16 @@ token;
   }
 
   doSignUp(){
-    let user = {
-      'first_name': 'oi',
-      'last_name': 'ola',
-      'email': 'teste123',
-      'password': '123456'
+    const user = {
+      first_name: 'oi',
+      last_name: 'ola',
+      email: 'teste123',
+      password: '123456'
     };
-    //this.httpClient.signup(user);
-   
+    axios.post(API + 'new', user).then(function (res)
+    {
+      console.log(res);
+    });
   }
 
 

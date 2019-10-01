@@ -36,7 +36,7 @@ exports.create = async (request, response, next) => {
         await UserRepository.create(request.body);
         emailService.send(
             request.body.email,
-            "Bem vindo ao Cine Spoiler",
+            "Bem vindo ao Traveler",
             global.EMAIL_TEMPLATE.replace('#'), request.body.name
         );
         response.status(200).send("Usuário cadastrado com sucesso!");
@@ -44,52 +44,6 @@ exports.create = async (request, response, next) => {
         throwException(response, "Falha ao cadastrar usuário", ex);
     }
 }
-
-exports.getFavoriteStops = async (request, response, next) => {
-    try {
-        let favoriteStops = await UserRepository.getFavoriteStops(request.params.userId);
-        response.status(200).send({
-            favoriteStops
-        })
-    } catch (ex) {
-        throwException(response, "Falha ao retornar as paradas favoritas", ex);
-    }
-}
-
-exports.getFavoriteStop = async (request, response, next) => {
-    try {
-        let favoriteStop = await UserRepository.getFavoriteStop(request.params.userId, request.params.stopId);
-        //let favoriteStop = await StopRepository.getStop(request.params.stopId);
-        response.status(200).send({
-            favoriteStop
-        })
-    } catch (ex) {
-        throwException(response, "Falha recuperar parada favorita", ex);
-    }
-}
-
-exports.addFavoriteStop = async (request, response, next) => {
-    try {
-        await UserRepository.addFavoriteStop(request.body);
-        response.status(200).send({
-            message: "Parada " + request.body.stopId + " favoritada com sucesso"
-        })
-    } catch (ex) {
-        throwException(response, "Falha ao favoritar parada", ex);
-    }
-}
-
-exports.removeFavoriteStop = async (request, response, next) => {
-    try {
-        await UserRepository.removeFavoriteStop(request.body);
-        response.status(200).send({
-            message: "Parada " + request.body.stopId + " removida de favoritas com sucesso"
-        })
-    } catch (ex) {
-        throwException(response, "Falha ao remover parada favorita", ex);
-    }
-}
-
 exports.update = async (request, response, next) => {
     try {
         await UserRepository.update(request.params.id, request.body);
