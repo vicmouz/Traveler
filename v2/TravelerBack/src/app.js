@@ -14,6 +14,7 @@ mongoose.connection.on('disconnected', () => { console.log('Mongoose disconnecte
 
 // Carregar models
 const User = require("./models/user.js");
+const Place = require("./models/place.js");
 
 // Carrega as rotas
 const userRoutes = require("./routes/user-routes");

@@ -13,7 +13,6 @@ exports.getAll = async (request, response, next) => {
 
 exports.create = async (request, response, next) => {
     try {
-        request.body.password = md5(request.body.password + global.ENCRYPT_KEY);
         await PlaceRepository.create(request.body);
         response.status(200).send("Local cadastrado com sucesso!");
     } catch (ex) {
