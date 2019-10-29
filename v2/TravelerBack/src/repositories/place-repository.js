@@ -8,6 +8,6 @@ exports.getAll = async () => {
 }
 
 exports.create = async (request_data) => {
-    let Place = new Place(request_data);
-    await Place.save();
+    let place = new Place(request_data);
+    await place.save();
 }

@@ -11,21 +11,6 @@ exports.getAll = async (request, response, next) => {
     }
 }
 
-/*exports.getByName = async (request, response, next) => {
-    try {
-        let user = await PlaceRepository.getByName(request.params.name);
-        if (user) {
-            response.status(200).send(user);
-        } else {
-            response.status(400).send(
-                'Nenhum usuário com o nome "' + request.params.name + '" foi encontrado!'
-            );
-        }
-    } catch (ex) {
-        throwException(response, "Falha ao buscar usuário por nome", ex);
-    }
-}*/
-
 exports.create = async (request, response, next) => {
     try {
         request.body.password = md5(request.body.password + global.ENCRYPT_KEY);
@@ -33,40 +18,6 @@ exports.create = async (request, response, next) => {
         response.status(200).send("Local cadastrado com sucesso!");
     } catch (ex) {
         throwException(response, "Falha ao cadastrar local", ex);
-    }
-}
-/*
-exports.update = async (request, response, next) => {
-    try {
-        await PlaceRepository.update(request.params.id, request.body);
-        response.status(200).send({
-            message: "Usuario atualizado com sucesso!",
-        });
-    } catch (ex) {
-        throwException(response, "Falha ao atualizar usuário", ex);
-    }
-}
-
-exports.delete = async (request, response, next) => {
-    try {
-        await PlaceRepository.delete(request.params.id);
-        response.status(200).send({
-            message: "Usuário deletado com sucesso!",
-        });
-    } catch (ex) {
-        throwException(response, "Falha ao deletar usuário", ex);
-    }
-}
-*/
-exports.getPlace = async (request, response, next) => {
-    try {
-        let token = request.params.token;
-        let data = await authService.decodeToken(token);
-
-        response.status(200).send(data)
-
-    } catch (ex) {
-        throwException(response, "Falha ao buscar lugar pelo token", ex);
     }
 }
 

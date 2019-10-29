@@ -17,6 +17,7 @@ const User = require("./models/user.js");
 
 // Carrega as rotas
 const userRoutes = require("./routes/user-routes");
+const placeRoutes = require("./routes/place-routes");
 
 
 app.use(function(req, res, next) {
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/users', userRoutes);
+app.use('/places', placeRoutes);
 
 // exportando a aplicação
 // toda vez que a classe for instanciada oque vai é o app
