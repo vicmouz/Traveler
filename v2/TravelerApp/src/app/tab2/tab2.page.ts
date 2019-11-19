@@ -13,8 +13,8 @@ import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 export class Tab2Page {
   map: Map;
 
-  private userLatitude: any;
-  private userLongitude: any;
+  private userLatitude: number;
+  private userLongitude: number;
   private loggedIn: boolean = false;
 
   constructor(private geolocation: Geolocation, public alertController: AlertController, public router: Router) { }
@@ -44,7 +44,7 @@ export class Tab2Page {
 
   leafletMap() {
     // In setView add latLng and zoom
-    this.map = new Map('mapId').setView([-8.05389, -34.88111], 18);
+    this.map = new Map('mapId').setView([-8.05389, -34.88111], 13);
     tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     }).addTo(this.map);
   }
@@ -72,7 +72,7 @@ export class Tab2Page {
         }, {
           text: 'Okay',
           handler: () => {
-            this.router.navigateByUrl('tab1');
+            this.router.navigateByUrl('Tab1Page');
           }
         }
       ]
